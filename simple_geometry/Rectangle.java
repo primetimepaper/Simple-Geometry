@@ -1,3 +1,4 @@
+package simple_geometry;
 import java.util.Arrays;
 
 public class Rectangle extends Shape {
