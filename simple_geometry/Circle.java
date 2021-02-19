@@ -1,3 +1,4 @@
+package simple_geometry;
 public class Circle extends Shape{
     private double radius;
     private Point centre;
