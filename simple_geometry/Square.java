@@ -1,3 +1,5 @@
+package simple_geometry;
+
 public class Square extends Rectangle{
 
     public Square(){
