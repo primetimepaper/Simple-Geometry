@@ -1,3 +1,5 @@
+package simple_geometry;
+
 public class Point implements Movable{
     private String color;
     public double x;
