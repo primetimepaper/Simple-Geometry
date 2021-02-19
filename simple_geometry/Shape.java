@@ -1,3 +1,5 @@
+package simple_geometry;
+
 public abstract class Shape implements Movable, Resizable, GeometricObject{
     private String color;
     private boolean filled;
