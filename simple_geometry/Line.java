@@ -1,3 +1,5 @@
+package simple_geometry;
+
 public class Line implements Movable, Resizable{
     private Point start;
     private Point end;
