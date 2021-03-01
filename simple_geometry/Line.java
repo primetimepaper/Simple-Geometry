@@ -1,5 +1,3 @@
-package simple_geometry;
-
 public class Line implements Movable, Resizable{
     private Point start;
     private Point end;
@@ -35,7 +33,7 @@ public class Line implements Movable, Resizable{
         this.end = new_end;
     }
 
-    public double getLength(){
+    public double getLength(){ // Eucledian Distance
         double distx = this.end.x - this.start.x;
         double disty = this.end.y - this.start.x;
         double ans = Math.sqrt(Math.pow(distx, 2) + Math.pow(disty, 2));
@@ -95,8 +93,7 @@ public class Line implements Movable, Resizable{
         this.end.y = this.end.y - ydist;
     }
 
-    @Override
-    public void resize(double percent){
+    public void Resize(double percent){
         if(percent > 0){
             double xdist, ydist;
             if(this.start.x > this.end.x){
@@ -117,8 +114,6 @@ public class Line implements Movable, Resizable{
                 this.start.y -= ydist * percent * 0.5;
                 this.end.y += ydist * percent * 0.5;
             }
-
         }
     }
-
 }
