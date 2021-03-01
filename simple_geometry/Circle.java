@@ -1,45 +1,38 @@
-package simple_geometry;
-
 public class Circle extends Shape{
     private double radius;
-    private Point centre;
     
 
     public Circle(){
-        Point p = new Point();
-        this.centre = p;
+        super();
         this.radius = 1.0;
     }
 
     public Circle(Point p){
+        super();
         this.radius = 1.0;
-        this.centre = p;
+        super.setCentre(p);
     }
 
     public Circle(double r){
+        super();
         this.radius = r;
-        Point p = new Point();
-        this.centre = p;
     }
 
     public Circle(Point p, double r){
+        super();
         this.radius = r;
-        this.centre = p;
+        super.setCentre(p);
     }
 
     public Circle(double r, String c, boolean f){
+        super(c, f);
         this.radius = r; 
-        super.setColor(c);
-        super.setFilled(f);
-        Point p = new Point();
-        this.centre = p;
     }
 
     public Circle(Point p, double r, String c, boolean f){
-        this.radius = r; 
-        super.setColor(c);
-        super.setFilled(f);
-        this.centre = p;
+        super(c, f);
+        this.radius = r;
+        super.setCentre(p);
     }
 
     public double getRadius(){
@@ -59,12 +52,36 @@ public class Circle extends Shape{
         double Perimeter = 2 * Math.PI * this.radius;
         return Perimeter;
     }
+    
+    public Point getCentre(){
+        return super.getCentre();
+    }
+
+    public void setCentre(Point new_centre){
+        super.setCentre(new_centre);
+    }
+
+    public String getColor(){
+        return super.getColor();
+    }
+
+    public void setColor(String new_c){
+        super.setColor(new_c);
+    }
+
+    public boolean isFilled(){
+        return super.isFilled();
+    }
+
+    public void setFilled(boolean a){
+        super.setFilled(a);
+    }
 
     @Override
     public boolean equals(Object other){
         if(other instanceof Circle){
-            Circle othercircle = (Circle)other;
-            if(this.radius == othercircle.radius & this.centre == othercircle.centre){
+            Circle otherCircle = (Circle)other;
+            if(this.radius == otherCircle.radius & this.getCentre().equals(otherCircle.getCentre())){
                 return true;
             }
             else{return false;}
@@ -80,28 +97,26 @@ public class Circle extends Shape{
     }
 
     public void MoveRight(){
-        this.centre.x = this.centre.x + 1;
+        super.MoveRight();
     }
 
     public void MoveLeft(){
-        this.centre.x = this.centre.x - 1;
+        super.MoveLeft();
     }
 
     public void MoveUp(){
-        this.centre.y = this.centre.y + 1;
+        super.MoveUp();
     }
 
     public void MoveDown(){
-        this.centre.y = this.centre.y - 1;
+        super.MoveDown();
     }
 
     public void MoveTo(Point p){
-        this.centre.x = p.x;
-        this.centre.y = p.y;
+        super.MoveTo(p);
     }
-
-    public void resize(double percent) {
+    
+    public void Resize(double percent) {
         if(percent > 0){this.radius = this.radius * percent;}
     }
-
 }
