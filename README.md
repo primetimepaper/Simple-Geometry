@@ -3,7 +3,7 @@
 
 ## WIP.
 Coming Soon
-1) Triangles
+1) Triangle resizing and other transformations
 2) Diamonds
 3) Simple Polygons (list of points stored in an ArrayList<Point>)
 4) Distance calculations
