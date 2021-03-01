@@ -1,5 +1,3 @@
-package simple_geometry;
-
 public class Point implements Movable{
     private String color;
     public double x;
@@ -66,6 +64,10 @@ public class Point implements Movable{
     public void MoveTo(Point p){
         this.x = p.x;
         this.y = p.y;
+    }
+
+    public double EucledianDistance(Point other){
+        return Math.sqrt(Math.pow(this.x - other.x, 2)+Math.pow(this.y - other.y, 2));
     }
 
 }
