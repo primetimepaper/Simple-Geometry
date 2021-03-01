@@ -1,22 +1,18 @@
-package simple_geometry;
-
 public abstract class Shape implements Movable, Resizable, GeometricObject{
-    private String color;
+    private String colour;
     private boolean filled;
     private Point centre;
 
     public Shape(){
-        this.color = "red";
+        this.colour = "red";
         this.filled = true;
-        Point centre = new Point(0,0);
-        this.centre = centre;
+        this.centre = new Point(0,0);
     }
 
     public Shape(String c, boolean f){
-        this.color = c;
+        this.colour = c;
         this.filled = f;
-        Point centre = new Point(0,0);
-        this.centre = centre;
+        this.centre = new Point(0,0);
     }
 
     public Point getCentre(){
@@ -28,11 +24,11 @@ public abstract class Shape implements Movable, Resizable, GeometricObject{
     }
 
     public String getColor(){
-        return this.color;
+        return this.colour;
     }
 
     public void setColor(String new_c){
-        this.color = new_c;
+        this.colour = new_c;
     }
 
     public boolean isFilled(){
@@ -44,17 +40,35 @@ public abstract class Shape implements Movable, Resizable, GeometricObject{
     }
 
     public String toString(){
-        String y = "A Shape with centre at " + this.centre + ", with color of " + this.color + " and filled.";
-        String x = "A Shape with centre at " + this.centre + ", with color of " + this.color + " and not filled.";
+        String y = "A Shape with (centre at " + this.centre + "), with color of " + this.colour + " and filled.";
+        String x = "A Shape with (centre at " + this.centre + "), with color of " + this.colour + " and not filled.";
         if (this.filled == true){
             return y;
         }
-        else if (this.filled == false){
+        else{
             return x;
         }
-        else{
-            return "???";
-        }
+    }
+
+    public void MoveRight(){
+        this.centre.x = this.centre.x + 1;
+    }
+
+    public void MoveLeft(){
+        this.centre.x = this.centre.x - 1;
+    }
+
+    public void MoveUp(){
+        this.centre.y = this.centre.y + 1;
+    }
+
+    public void MoveDown(){
+        this.centre.y = this.centre.y - 1;
+    }
+
+    public void MoveTo(Point p){
+        this.centre.x = p.x;
+        this.centre.y = p.y;
     }
 
     public abstract double getArea();
