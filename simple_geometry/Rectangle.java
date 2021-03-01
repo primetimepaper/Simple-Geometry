@@ -4,44 +4,38 @@ import java.util.Arrays;
 public class Rectangle extends Shape {
     private double width;
     private double length;
-    private Point[] edge;
-    public Point centre;
+    public Point[] edge;
 
     public Rectangle(){
+        super();
         this.width = 1.0;
         this.length = 1.0;
-        Point p = new Point();
-        this.centre = p;
     }
 
     public Rectangle(double w, double l){
+        super();
         this.width = w;
         this.length = l;
-        Point p = new Point();
-        this.centre = p;
     }
 
     public Rectangle(Point p, double w, double l){
+        super();
         this.width = w;
         this.length = l;
-        this.centre = p;
+        super.setCentre(p);
     }
 
     public Rectangle(double w, double l, String c, boolean f){
+        super(c, f);
         this.width = w;
         this.length = l;
-        super.setColor(c);
-        super.setFilled(f);
-        Point p = new Point();
-        this.centre = p;
     }
 
     public Rectangle(Point p, double w, double l, String c, boolean f){
+        super(c, f);
         this.width = w;
         this.length = l;
-        super.setColor(c);
-        super.setFilled(f);
-        this.centre = p;
+        super.setCentre(p);
     }
 
     public double getWidth(){
@@ -86,46 +80,14 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void MoveDown(){
-        Point newcentre = super.getCentre();
-        newcentre.MoveDown();
-        this.centre = newcentre;
-    }
-
-    @Override
-    public void MoveUp(){
-        Point newcentre = super.getCentre();
-        newcentre.MoveUp();
-        this.centre = newcentre;
-    }
-
-    @Override
-    public void MoveLeft(){
-        Point newcentre = super.getCentre();
-        newcentre.MoveLeft();
-        this.centre = newcentre;
-    }
-
-    @Override
-    public void MoveRight(){
-        Point newcentre = super.getCentre();
-        newcentre.MoveRight();
-        this.centre = newcentre;
-    }
-
-    @Override
-    public void MoveTo(Point p){
-        super.setCentre(p);
-    }
-
-    @Override
     public boolean equals(Object other){
-        if(other instanceof Rectangle){
-            Rectangle otherrectangle = (Rectangle) other;
+        if(other instanceof Rectangle || other instanceof Square){
+            Rectangle otherRectangle = (Rectangle) other;
             this.getEdges();
-            otherrectangle.getEdges();
+            otherRectangle.getEdges();
+            System.out.println(otherRectangle);
             for(int i = 0; i < 4; i++){
-                if(this.edge[i] != otherrectangle.edge[i]){
+                if(!(this.edge[i].equals(otherRectangle.edge[i]))){
                     return false;
                 }
             }
@@ -135,7 +97,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void resize(double percent){
+    public void Resize(double percent){
         if(percent > 0){
             this.length *= percent;
             this.width *= percent;
@@ -147,5 +109,55 @@ public class Rectangle extends Shape {
         String tostr = super.toString();
         String x = "A Rectangle with width " + this.width + " and length " + this.length + ", which is a subclass of " + tostr;
         return x;
+    }
+
+    public Point getCentre(){
+        return super.getCentre();
+    }
+
+    public void setCentre(Point new_centre){
+        super.setCentre(new_centre);
+        this.getEdges();
+    }
+
+    public String getColor(){
+        return super.getColor();
+    }
+
+    public void setColor(String new_c){
+        super.setColor(new_c);
+    }
+
+    public boolean isFilled(){
+        return super.isFilled();
+    }
+
+    public void setFilled(boolean a){
+        super.setFilled(a);
+    }
+
+    public void MoveDown(){
+        super.MoveDown();
+        this.getEdges();
+    }
+
+    public void MoveUp(){
+        super.MoveUp();
+        this.getEdges();
+    }
+
+    public void MoveLeft(){
+        super.MoveLeft();
+        this.getEdges();
+    }
+
+    public void MoveRight(){
+        super.MoveRight();
+        this.getEdges();
+    }
+
+    public void MoveTo(Point p){
+        super.MoveTo(p);
+        this.getEdges();
     }
 }
